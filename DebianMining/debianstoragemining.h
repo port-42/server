@@ -2,6 +2,7 @@
 #define DEBIANSTORAGEMINING_H
 
 #include "iStrategy.h"
+#include <QProcess>
 
 class DebianStorageMining : public iStrategy
 {

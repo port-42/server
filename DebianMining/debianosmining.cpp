@@ -7,8 +7,9 @@ DebianOsMining::DebianOsMining()
 QJsonObject DebianOsMining::getData() {
     int z;
     struct utsname u_name;
-    z = uname(&u_name);
     QJsonObject json;
+
+    z = uname(&u_name);
     if (z == -1) {
         json["err"] = "uname error";
     }
@@ -18,5 +19,4 @@ QJsonObject DebianOsMining::getData() {
         json["arch"] = u_name.machine;
     }
     return json;
-
 }
