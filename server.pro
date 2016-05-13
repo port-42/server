@@ -25,7 +25,11 @@ SOURCES += main.cpp \
     Windows7Mining/windows7osmining.cpp \
     Windows7Mining/windows7memorymining.cpp \
     Windows7Mining/windows7processormining.cpp \
-    Windows7Mining/windows7storagemining.cpp
+    Windows7Mining/windows7storagemining.cpp \
+    Windows10Mining/windows10memorymining.cpp \
+    Windows10Mining/windows10osmining.cpp \
+    Windows10Mining/windows10processormining.cpp \
+    Windows10Mining/windows10storagemining.cpp
 
 HEADERS += \
     dataminingfactory.h \
@@ -40,4 +44,12 @@ HEADERS += \
     Windows7Mining/windows7osmining.h \
     Windows7Mining/windows7memorymining.h \
     Windows7Mining/windows7processormining.h \
-    Windows7Mining/windows7storagemining.h
+    Windows7Mining/windows7storagemining.h \
+    Windows10Mining/windows10memorymining.h \
+    Windows10Mining/windows10osmining.h \
+    Windows10Mining/windows10processormining.h \
+    Windows10Mining/windows10storagemining.h
+
+DISTFILES += \
+    LICENSE \
+    README.md
