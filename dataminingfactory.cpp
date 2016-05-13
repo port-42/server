@@ -25,5 +25,28 @@ iDataMining *DataMiningFactory::Create(dataType dType) {
         mining->setStrategy(strategy);
     }
     #endif
+
+    #ifdef Q_OS_WIN
+    if (QSysInfo::windowsVersion() == QSysInfo::WV_WINDOWS10) {
+        if (dType == os) {
+            iStrategy *strategy = new Windows10OSMining();
+            mining->setStrategy(strategy);
+        }
+        else if (dType == processor) {
+            iStrategy *strategy = new Windows10ProcessorMining();
+            mining->setStrategy(strategy);
+        }
+        else if (dType == memory) {
+            iStrategy *strategy = new Windows10MemoryMining();
+            mining->setStrategy(strategy);
+        }
+        else if (dType == storage) {
+            iStrategy *strategy = new Windows10StorageMining();
+            mining->setStrategy(strategy);
+        }
+    }
+
+    #endif
+
     return mining;
 }
