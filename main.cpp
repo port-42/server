@@ -34,12 +34,11 @@ int main()
     std::cout << json["usage"].toString().toStdString() << std::endl;
     std::cout << "" << std::endl;
 
-    /*mining = factory.Create(storage);
+    mining = factory.Create(storage);
     json = mining->getData();
     std::cout << "Storage:" << std::endl;
     std::cout << json["disks"].toString().toStdString() << std::endl;
     std::cout << json["total"].toString().toStdString() << std::endl;
     std::cout << json["use"].toString().toStdString() << std::endl;
     std::cout << "" << std::endl;
-    */
 }

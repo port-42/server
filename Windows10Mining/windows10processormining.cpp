@@ -3,9 +3,6 @@
 #ifdef Q_OS_WIN
 #include <windows.h>
 #include <intrin.h>
-
-#include <iostream>
-#include <string>
 #endif
 
 Windows10ProcessorMining::Windows10ProcessorMining()

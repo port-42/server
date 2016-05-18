@@ -14,6 +14,7 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
+win32:LIBS += -lPdh
 
 SOURCES += main.cpp \
     dataminingfactory.cpp \

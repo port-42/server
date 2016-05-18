@@ -45,6 +45,24 @@ iDataMining *DataMiningFactory::Create(dataType dType) {
             mining->setStrategy(strategy);
         }
     }
+    else if (QSysInfo::windowsVersion() == QSysInfo::WV_WINDOWS7) {
+        if (dType == os) {
+            iStrategy *strategy = new Windows7OSMining();
+            mining->setStrategy(strategy);
+        }
+        else if (dType == processor) {
+            iStrategy *strategy = new Windows7ProcessorMining();
+            mining->setStrategy(strategy);
+        }
+        else if (dType == memory) {
+            iStrategy *strategy = new Windows7MemoryMining();
+            mining->setStrategy(strategy);
+        }
+        else if (dType == storage) {
+            iStrategy *strategy = new Windows7StorageMining();
+            mining->setStrategy(strategy);
+        }
+    }
 
     #endif
 
