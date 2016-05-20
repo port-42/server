@@ -57,8 +57,8 @@ QJsonObject Windows7ProcessorMining::getData() {
 
     PdhOpenQuery((LPCWSTR)NULL, (DWORD)NULL, &cpuQuery);
     const LANGID langId = GetUserDefaultUILanguage();
-       //Français => langId == 1036 (0x080c en héxa)
-    if (langId == 1036) {
+    //Français (dans l'ordre BE, CA, FR, LU, MC, CH)
+    if (langId == 2060 || langId == 3084 || langId == 1036 || langId == 5132 || langId == 6156 || langId == 4108) {
         PdhAddCounter(cpuQuery, L"\\Processeur(_total)\\% temps processeur", (DWORD)NULL, &cpuTotal);
     }
     else {

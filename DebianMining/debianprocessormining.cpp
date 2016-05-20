@@ -35,7 +35,13 @@ QJsonObject DebianProcessorMining::getData() {
     p.start("bash",QStringList() << "-c" << "top -bn 1 >&1 | grep 'load average' | cut -d ':' -f5 | cut -d ' ' -f2");
     p.waitForFinished();
     usage = p.readAllStandardOutput();
-    usage.replace(",\n","").replace(",",".");
+    if ((usage.toFloat() * 100) == 0) {
+        usage.replace(",\n","").replace(",",".");
+        p.start("bash",QStringList() << "-c" << "top -bn 1 >&1 | grep 'load average' | cut -d ':' -f4 | cut -d ' ' -f2");
+        p.waitForFinished();
+        usage = p.readAllStandardOutput();
+        usage.replace(",\n","").replace(",",".");
+    }
     usage = QString::number(usage.toFloat() * 100) + "%";
 
     json["model"] = model;

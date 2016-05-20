@@ -1,8 +1,12 @@
 #include "windows10processormining.h"
 
 #ifdef Q_OS_WIN
-#include <windows.h>
-#include <intrin.h>
+    #include <windows.h>
+    #include <intrin.h>
+    #include <unistd.h>
+    #include <TCHAR.h>
+    #include <pdh.h>
+    #include <pdhmsg.h>
 #endif
 
 Windows10ProcessorMining::Windows10ProcessorMining()
@@ -11,6 +15,10 @@ Windows10ProcessorMining::Windows10ProcessorMining()
 
 QJsonObject Windows10ProcessorMining::getData() {
     QJsonObject json;
+
+
+#ifdef Q_OS_WIN
+    //Partie modèle du processeur
     int CPUInfo[4] = {-1};
     char CPUBrandString[0x40];
     __cpuid(CPUInfo, 0x80000000);
@@ -28,6 +36,7 @@ QJsonObject Windows10ProcessorMining::getData() {
     }
     json["model"] = CPUBrandString;
 
+    //Partie archittecture du processeur
     #ifdef Q_PROCESSOR_X86_32
         json["arch"] = "32 Bits";
     #endif
@@ -35,12 +44,38 @@ QJsonObject Windows10ProcessorMining::getData() {
         json["arch"] = "64 Bits";
     #endif
 
+    //Partie nombre de coeurs du processeur
     SYSTEM_INFO sysinfo;
     GetSystemInfo( &sysinfo );
     int numCPU = sysinfo.dwNumberOfProcessors;
     json["cores"] = QString::number(numCPU);
 
-    json["usage"] = "NaN";
+    //Partie usage du processeur
+    static PDH_HQUERY cpuQuery;
+    static PDH_HCOUNTER cpuTotal;
+    int i = 0;
+    PDH_FMT_COUNTERVALUE counterVal;
+
+    PdhOpenQuery((LPCWSTR)NULL, (DWORD)NULL, &cpuQuery);
+    const LANGID langId = GetUserDefaultUILanguage();
+       //Français (dans l'ordre BE, CA, FR, LU, MC, CH)
+    if (langId == 2060 || langId == 3084 || langId == 1036 || langId == 5132 || langId == 6156 || langId == 4108) {
+        PdhAddCounter(cpuQuery, L"\\Processeur(_total)\\% temps processeur", (DWORD)NULL, &cpuTotal);
+    }
+    else {
+        PdhAddCounter(cpuQuery, L"\\Processor(_total)\\% processor time", (DWORD)NULL, &cpuTotal);
+    }
+    PdhCollectQueryData(cpuQuery);
+    PdhGetFormattedCounterValue(cpuTotal, PDH_FMT_DOUBLE, NULL, &counterVal);
+    while (counterVal.doubleValue == 0 && i < 10) {
+        usleep(1000);
+        PdhCollectQueryData(cpuQuery);
+        PdhGetFormattedCounterValue(cpuTotal, PDH_FMT_DOUBLE, NULL, &counterVal);
+        i++;
+    }
+    int counter = counterVal.doubleValue;
+    json["usage"] = QString::number(counter);
+ #endif
 
     return json;
 }
