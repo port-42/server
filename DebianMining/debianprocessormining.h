@@ -2,6 +2,7 @@
 #define DEBIANPROCESSORMINING_H
 
 #include "iStrategy.h"
+#include <QProcess>
 
 class DebianProcessorMining : public iStrategy
 {

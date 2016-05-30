@@ -1,14 +1,14 @@
-#include "windows7memorymining.h"
+#include "windows10memorymining.h"
 
 #ifdef Q_OS_WIN
     #include "windows.h"
 #endif
 
-Windows7MemoryMining::Windows7MemoryMining()
+Windows10MemoryMining::Windows10MemoryMining()
 {
 }
 
-QJsonObject Windows7MemoryMining::getData() {
+QJsonObject Windows10MemoryMining::getData() {
     QJsonObject json;
 
 #ifdef Q_OS_WIN

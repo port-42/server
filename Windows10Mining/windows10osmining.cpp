@@ -1,13 +1,13 @@
-#include "windows7osmining.h"
+#include "windows10osmining.h"
 
-Windows7OSMining::Windows7OSMining()
+Windows10OSMining::Windows10OSMining()
 {
 }
 
-QJsonObject Windows7OSMining::getData() {
+QJsonObject Windows10OSMining::getData() {
     QJsonObject json;
     json["os"] = "Windows";
-    json["version"] = "7";
+    json["version"] = "10";
     #ifdef Q_OS_WIN32
     json["arch"] = "32 Bits";
     #endif

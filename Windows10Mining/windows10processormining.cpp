@@ -1,4 +1,4 @@
-#include "windows7processormining.h"
+#include "windows10processormining.h"
 
 #ifdef Q_OS_WIN
     #include <windows.h>
@@ -9,11 +9,11 @@
     #include <pdhmsg.h>
 #endif
 
-Windows7ProcessorMining::Windows7ProcessorMining()
+Windows10ProcessorMining::Windows10ProcessorMining()
 {
 }
 
-QJsonObject Windows7ProcessorMining::getData() {
+QJsonObject Windows10ProcessorMining::getData() {
     QJsonObject json;
 
 
@@ -53,11 +53,12 @@ QJsonObject Windows7ProcessorMining::getData() {
     //Partie usage du processeur
     static PDH_HQUERY cpuQuery;
     static PDH_HCOUNTER cpuTotal;
+    int i = 0;
     PDH_FMT_COUNTERVALUE counterVal;
 
     PdhOpenQuery((LPCWSTR)NULL, (DWORD)NULL, &cpuQuery);
     const LANGID langId = GetUserDefaultUILanguage();
-    //Français (dans l'ordre BE, CA, FR, LU, MC, CH)
+       //Français (dans l'ordre BE, CA, FR, LU, MC, CH)
     if (langId == 2060 || langId == 3084 || langId == 1036 || langId == 5132 || langId == 6156 || langId == 4108) {
         PdhAddCounter(cpuQuery, L"\\Processeur(_total)\\% temps processeur", (DWORD)NULL, &cpuTotal);
     }
@@ -66,10 +67,11 @@ QJsonObject Windows7ProcessorMining::getData() {
     }
     PdhCollectQueryData(cpuQuery);
     PdhGetFormattedCounterValue(cpuTotal, PDH_FMT_DOUBLE, NULL, &counterVal);
-    while (counterVal.doubleValue == 0) {
+    while (counterVal.doubleValue == 0 && i < 10) {
         usleep(1000);
         PdhCollectQueryData(cpuQuery);
         PdhGetFormattedCounterValue(cpuTotal, PDH_FMT_DOUBLE, NULL, &counterVal);
+        i++;
     }
     int counter = counterVal.doubleValue;
     json["usage"] = QString::number(counter);

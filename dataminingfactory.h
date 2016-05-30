@@ -7,6 +7,15 @@
 #include "DebianMining/debianmemorymining.h"
 #include "DebianMining/debianprocessormining.h"
 #include "DebianMining/debianstoragemining.h"
+#include "Windows10Mining/windows10memorymining.h"
+#include "Windows10Mining/windows10osmining.h"
+#include "Windows10Mining/windows10processormining.h"
+#include "Windows10Mining/windows10storagemining.h"
+#include "Windows7Mining/windows7memorymining.h"
+#include "Windows7Mining/windows7osmining.h"
+#include "Windows7Mining/windows7processormining.h"
+#include "Windows7Mining/windows7storagemining.h"
+#include <QtGlobal>
 #include <string>
 
 

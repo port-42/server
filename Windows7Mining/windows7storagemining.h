@@ -2,6 +2,7 @@
 #define WINDOWS7STORAGEMINING_H
 
 #include "iStrategy.h"
+#include <QStorageInfo>
 
 class Windows7StorageMining : public iStrategy
 {

@@ -1,10 +1,10 @@
-#include "windows7storagemining.h"
+#include "windows10storagemining.h"
 
-Windows7StorageMining::Windows7StorageMining()
+Windows10StorageMining::Windows10StorageMining()
 {
 }
 
-QJsonObject Windows7StorageMining::getData() {
+QJsonObject Windows10StorageMining::getData() {
     QJsonObject json;
     int disks = 0;
     double total = 0;
