@@ -31,7 +31,11 @@ SOURCES += main.cpp \
     Windows10Mining/windows10memorymining.cpp \
     Windows10Mining/windows10osmining.cpp \
     Windows10Mining/windows10processormining.cpp \
-    Windows10Mining/windows10storagemining.cpp
+    Windows10Mining/windows10storagemining.cpp \
+    controller/jsoncontroller.cpp \
+    controller/oscontroller.cpp \
+    controller/notfoundcontroller.cpp \
+    requestmapper.cpp
 
 HEADERS += \
     dataminingfactory.h \
@@ -50,8 +54,21 @@ HEADERS += \
     Windows10Mining/windows10memorymining.h \
     Windows10Mining/windows10osmining.h \
     Windows10Mining/windows10processormining.h \
-    Windows10Mining/windows10storagemining.h
+    Windows10Mining/windows10storagemining.h \
+    controller/jsoncontroller.h \
+    controller/oscontroller.h \
+    controller/notfoundcontroller.h \
+    requestmapper.h
 
 DISTFILES += \
     LICENSE \
-    README.md
+    README.md \
+    Port-Server.ini
+
+#---------------------------------------------------------------------------------------
+# The following lines include the sources of the QtWebAppLib library
+#---------------------------------------------------------------------------------------
+
+include(../QtWebApp/logging/logging.pri)
+include(../QtWebApp/httpserver/httpserver.pri)
+include(../QtWebApp/templateengine/templateengine.pri)
