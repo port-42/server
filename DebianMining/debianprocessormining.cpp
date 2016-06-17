@@ -45,8 +45,8 @@ QJsonObject DebianProcessorMining::getData() {
     usage = QString::number(usage.toFloat() * 100) + "%";
 
     json["model"] = model;
-    json["arch"]  = arch;
-    json["cores"] = cores;
+    json["architecture"]  = arch;
+    json["count"] = cores;
     json["usage"] = usage;
 
     return json;

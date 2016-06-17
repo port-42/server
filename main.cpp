@@ -17,14 +17,14 @@ int main()
     std::cout << json["arch"].toString().toStdString() << std::endl;
     std::cout << "" << std::endl;
 
-    mining = factory.Create(memory);
+    mining = factory.Create(ram);
     json = mining->getData();
     std::cout << "Memory:" << std::endl;
     std::cout << json["totalMemory"].toString().toStdString() << std::endl;
     std::cout << json["usedMemory"].toString().toStdString() << std::endl;
     std::cout << "" << std::endl;
 
-    mining = factory.Create(processor);
+    mining = factory.Create(cpu);
     json = mining->getData();
     std::cout << "CPU:" << std::endl;
     std::cout << json["model"].toString().toStdString() << std::endl;
@@ -33,7 +33,7 @@ int main()
     std::cout << json["usage"].toString().toStdString() << std::endl;
     std::cout << "" << std::endl;
 
-    mining = factory.Create(storage);
+    mining = factory.Create(hdd);
     json = mining->getData();
     std::cout << "Storage:" << std::endl;
     std::cout << json["disks"].toString().toStdString() << std::endl;
