@@ -18,8 +18,8 @@ QJsonObject Windows7StorageMining::getData() {
         }
     }
     #endif
-    json["disks"] = QString::number(disks);
+    json["count"] = QString::number(disks);
     json["total"] = QString::number(total / (1024 * 1024 * 1024)) + " Go";
-    json["use"] = QString::number(use / (1024 * 1024 * 1024)) + " Go";
+    json["usage"] = QString::number(use / (1024 * 1024 * 1024)) + " Go";
     return json;
 }

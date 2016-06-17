@@ -16,10 +16,10 @@ QJsonObject Windows10MemoryMining::getData() {
     ZeroMemory(&memory_status, sizeof(MEMORYSTATUSEX));
     memory_status.dwLength = sizeof(MEMORYSTATUSEX);
     if (GlobalMemoryStatusEx(&memory_status)) {
-        json["totalMemory"] = QString::number(memory_status.ullTotalPhys/(1024*1024))+" Mo";
-        json["usedMemory"] = QString::number((memory_status.ullTotalPhys-memory_status.ullAvailPhys)/(1024*1024))+" Mo";
+        json["total"] = QString::number(memory_status.ullTotalPhys/(1024*1024))+" Mo";
+        json["usage"] = QString::number((memory_status.ullTotalPhys-memory_status.ullAvailPhys)/(1024*1024))+" Mo";
     } else {
-      json["err"] = "Memory mining error";
+      json["error"] = "Memory data mining error.";
     }
 #endif
     return json;

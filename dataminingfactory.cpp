@@ -32,15 +32,15 @@ iDataMining *DataMiningFactory::Create(dataType dType) {
             iStrategy *strategy = new Windows10OSMining();
             mining->setStrategy(strategy);
         }
-        else if (dType == processor) {
+        else if (dType == cpu) {
             iStrategy *strategy = new Windows10ProcessorMining();
             mining->setStrategy(strategy);
         }
-        else if (dType == memory) {
+        else if (dType == ram) {
             iStrategy *strategy = new Windows10MemoryMining();
             mining->setStrategy(strategy);
         }
-        else if (dType == storage) {
+        else if (dType == hdd) {
             iStrategy *strategy = new Windows10StorageMining();
             mining->setStrategy(strategy);
         }
@@ -50,15 +50,15 @@ iDataMining *DataMiningFactory::Create(dataType dType) {
             iStrategy *strategy = new Windows7OSMining();
             mining->setStrategy(strategy);
         }
-        else if (dType == processor) {
+        else if (dType == cpu) {
             iStrategy *strategy = new Windows7ProcessorMining();
             mining->setStrategy(strategy);
         }
-        else if (dType == memory) {
+        else if (dType == ram) {
             iStrategy *strategy = new Windows7MemoryMining();
             mining->setStrategy(strategy);
         }
-        else if (dType == storage) {
+        else if (dType == hdd) {
             iStrategy *strategy = new Windows7StorageMining();
             mining->setStrategy(strategy);
         }

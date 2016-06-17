@@ -38,17 +38,17 @@ QJsonObject Windows10ProcessorMining::getData() {
 
     //Partie archittecture du processeur
     #ifdef Q_PROCESSOR_X86_32
-        json["arch"] = "32 Bits";
+        json["architecture"] = "32 Bits";
     #endif
     #ifdef Q_PROCESSOR_X86_64
-        json["arch"] = "64 Bits";
+        json["architecture"] = "64 Bits";
     #endif
 
     //Partie nombre de coeurs du processeur
     SYSTEM_INFO sysinfo;
     GetSystemInfo( &sysinfo );
     int numCPU = sysinfo.dwNumberOfProcessors;
-    json["cores"] = QString::number(numCPU);
+    json["count"] = QString::number(numCPU);
 
     //Partie usage du processeur
     static PDH_HQUERY cpuQuery;

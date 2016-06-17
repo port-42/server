@@ -26,9 +26,9 @@ QJsonObject DebianStorageMining::getData() {
     use = p.readAllStandardOutput();
     use = QString::number(use.toFloat() / (1024 * 1024)) + " Go";
 
-    json["disks"] = disks;
+    json["count"] = disks;
     json["total"] = total;
-    json["use"] = use;
+    json["usage"] = use;
 
     return json;
 }

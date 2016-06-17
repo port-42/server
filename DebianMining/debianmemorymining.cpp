@@ -38,8 +38,8 @@ QJsonObject DebianMemoryMining::getData() {
     totalMemory = QString::number(totalMemory.toInt() / 1024) + " Mo";
     usedMemory = QString::number(usedMemory.toInt() / 1024) + " Mo";
 
-    json["totalMemory"] = totalMemory;
-    json["usedMemory"] = usedMemory;
+    json["total"] = totalMemory;
+    json["usage"] = usedMemory;
     return json;
 }
 

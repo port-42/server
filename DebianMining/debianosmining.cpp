@@ -17,12 +17,12 @@ QJsonObject DebianOsMining::getData() {
 
     z = uname(&u_name);
     if (z == -1) {
-        json["err"] = "uname error";
+        json["error"] = "OS uname error";
     }
     else {
-        json["os"] = u_name.sysname;
+        json["name"] = u_name.sysname;
         json["version"] = u_name.nodename;
-        json["arch"] = u_name.machine;
+        json["architecture"] = u_name.machine;
     }
     #endif
     return json;
