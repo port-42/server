@@ -1,7 +1,7 @@
 #ifndef DEBIANMEMORYMINING_H
 #define DEBIANMEMORYMINING_H
 
-#include "iStrategy.h"
+#include "API/iStrategy.h"
 #include <QProcess>
 
 class DebianMemoryMining : public iStrategy

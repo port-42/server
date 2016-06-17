@@ -1,7 +1,7 @@
 #ifndef WINDOWS10PROCESSORMINING_H
 #define WINDOWS10PROCESSORMINING_H
 
-#include "iStrategy.h"
+#include "API/iStrategy.h"
 
 class Windows10ProcessorMining : public iStrategy
 {

@@ -1,7 +1,7 @@
 #ifndef WINDOWS10STORAGEMINING_H
 #define WINDOWS10STORAGEMINING_H
 
-#include "iStrategy.h"
+#include "API/iStrategy.h"
 #if QT_VERSION >= 0x050400
 #include <QStorageInfo>
 #endif

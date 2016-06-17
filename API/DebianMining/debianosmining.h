@@ -1,7 +1,7 @@
 #ifndef DEBIANOSMINING_H
 #define DEBIANOSMINING_H
 
-#include "iStrategy.h"
+#include "API/iStrategy.h"
 #include <QtGlobal>
 
 class DebianOsMining : public iStrategy

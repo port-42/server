@@ -1,7 +1,7 @@
 #ifndef WINDOWS7STORAGEMINING_H
 #define WINDOWS7STORAGEMINING_H
 
-#include "iStrategy.h"
+#include "API/iStrategy.h"
 #include <QtGlobal>
 
 #if QT_VERSION >= 0x050400

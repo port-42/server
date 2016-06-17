@@ -1,7 +1,7 @@
 #ifndef WINDOWS7MEMORYMINING_H
 #define WINDOWS7MEMORYMINING_H
 
-#include "iStrategy.h"
+#include "API/iStrategy.h"
 
 class Windows7MemoryMining : public iStrategy
 {
