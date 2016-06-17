@@ -11,4 +11,3 @@ void Mining::setStrategy(iStrategy *strategy) {
 QJsonObject Mining::getData() {
     return strategy->getData();
 }
-
