@@ -1,43 +1,40 @@
 #include <iostream>
+#include <QCoreApplication>
 #include <QSysInfo>
 #include <QtGlobal>
 #include <QJsonObject>
+#include <httplistener.h>
+#include <requestmapper.h>
 
 #include "server.h"
-#include "dataminingfactory.h"
 
-int main()
+QString getConfigFileName() {
+  QString binDir = QCoreApplication::applicationDirPath();
+  QString appName = QCoreApplication::applicationName();
+  QString fileName(appName+".ini");
+  QFile file(binDir+"/"+fileName);
+
+  return (file.exists()) ? fileName : NULL;
+}
+
+int main(int argc, char *argv[])
 {
-    DataMiningFactory factory = DataMiningFactory();
-    iDataMining *mining = factory.Create(os);
-    QJsonObject json = mining->getData();
-    std::cout << "OS:" << std::endl;
-    std::cout << json["name"].toString().toStdString() << std::endl;
-    std::cout << json["version"].toString().toStdString() << std::endl;
-    std::cout << json["architecture"].toString().toStdString() << std::endl;
-    std::cout << "" << std::endl;
+  QCoreApplication app(argc,argv);
 
-    mining = factory.Create(ram);
-    json = mining->getData();
-    std::cout << "Memory:" << std::endl;
-    std::cout << json["total"].toString().toStdString() << std::endl;
-    std::cout << json["usage"].toString().toStdString() << std::endl;
-    std::cout << "" << std::endl;
+  app.setApplicationName("Port-Server");
+  app.setOrganizationName("port-42");
 
-    mining = factory.Create(cpu);
-    json = mining->getData();
-    std::cout << "CPU:" << std::endl;
-    std::cout << json["model"].toString().toStdString() << std::endl;
-    std::cout << json["architecture"].toString().toStdString() << std::endl;
-    std::cout << json["count"].toString().toStdString() << std::endl;
-    std::cout << json["usage"].toString().toStdString() << std::endl;
-    std::cout << "" << std::endl;
+  QString configFileName = getConfigFileName();
 
-    mining = factory.Create(hdd);
-    json = mining->getData();
-    std::cout << "Storage:" << std::endl;
-    std::cout << json["count"].toString().toStdString() << std::endl;
-    std::cout << json["total"].toString().toStdString() << std::endl;
-    std::cout << json["usage"].toString().toStdString() << std::endl;
-    std::cout << "" << std::endl;
+  // Configure and start the TCP listener
+  QSettings* listenerSettings=new QSettings(configFileName,QSettings::IniFormat,&app);
+  listenerSettings->beginGroup("listener");
+
+  new HttpListener(listenerSettings, new RequestMapper(&app),&app);
+
+  qWarning("Server has started");
+
+  app.exec();
+
+  qWarning("Server has stopped");
 }
