@@ -18,41 +18,41 @@ TEMPLATE = app
 win32:LIBS += -lPdh
 
 SOURCES += main.cpp \
-    dataminingfactory.cpp \
-    mining.cpp \
-    DebianMining/debianprocessormining.cpp \
-    DebianMining/debianosmining.cpp \
-    DebianMining/debianmemorymining.cpp \
-    DebianMining/debianstoragemining.cpp \
-    Windows7Mining/windows7osmining.cpp \
-    Windows7Mining/windows7memorymining.cpp \
-    Windows7Mining/windows7processormining.cpp \
-    Windows7Mining/windows7storagemining.cpp \
-    Windows10Mining/windows10memorymining.cpp \
-    Windows10Mining/windows10osmining.cpp \
-    Windows10Mining/windows10processormining.cpp \
-    Windows10Mining/windows10storagemining.cpp \
+    API/dataminingfactory.cpp \
+    API/mining.cpp \
+    API/DebianMining/debianprocessormining.cpp \
+    API/DebianMining/debianosmining.cpp \
+    API/DebianMining/debianmemorymining.cpp \
+    API/DebianMining/debianstoragemining.cpp \
+    API/Windows7Mining/windows7osmining.cpp \
+    API/Windows7Mining/windows7memorymining.cpp \
+    API/Windows7Mining/windows7processormining.cpp \
+    API/Windows7Mining/windows7storagemining.cpp \
+    API/Windows10Mining/windows10memorymining.cpp \
+    API/Windows10Mining/windows10osmining.cpp \
+    API/Windows10Mining/windows10processormining.cpp \
+    API/Windows10Mining/windows10storagemining.cpp \
     controller/maincontroller.cpp \
     requestmapper.cpp
 
 HEADERS += \
-    dataminingfactory.h \
+    API/dataminingfactory.h \
     server.h \
-    mining.h \
-    iDataMining.h \
-    iStrategy.h \
-    DebianMining/debianprocessormining.h \
-    DebianMining/debianosmining.h \
-    DebianMining/debianmemorymining.h \
-    DebianMining/debianstoragemining.h \
-    Windows7Mining/windows7osmining.h \
-    Windows7Mining/windows7memorymining.h \
-    Windows7Mining/windows7processormining.h \
-    Windows7Mining/windows7storagemining.h \
-    Windows10Mining/windows10memorymining.h \
-    Windows10Mining/windows10osmining.h \
-    Windows10Mining/windows10processormining.h \
-    Windows10Mining/windows10storagemining.h \
+    API/mining.h \
+    API/iDataMining.h \
+    API/iStrategy.h \
+    API/DebianMining/debianprocessormining.h \
+    API/DebianMining/debianosmining.h \
+    API/DebianMining/debianmemorymining.h \
+    API/DebianMining/debianstoragemining.h \
+    API/Windows7Mining/windows7osmining.h \
+    API/Windows7Mining/windows7memorymining.h \
+    API/Windows7Mining/windows7processormining.h \
+    API/Windows7Mining/windows7storagemining.h \
+    API/Windows10Mining/windows10memorymining.h \
+    API/Windows10Mining/windows10osmining.h \
+    API/Windows10Mining/windows10processormining.h \
+    API/Windows10Mining/windows10storagemining.h \
     controller/maincontroller.h \
     requestmapper.h
 
@@ -65,6 +65,6 @@ DISTFILES += \
 # The following lines include the sources of the QtWebAppLib library
 #---------------------------------------------------------------------------------------
 
-include(../QtWebApp/logging/logging.pri)
-include(../QtWebApp/httpserver/httpserver.pri)
-include(../QtWebApp/templateengine/templateengine.pri)
+include(Lib/QtWebApp/logging/logging.pri)
+include(Lib/QtWebApp/httpserver/httpserver.pri)
+include(Lib/QtWebApp/templateengine/templateengine.pri)
