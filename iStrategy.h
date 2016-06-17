@@ -7,6 +7,7 @@
 class iStrategy {
 public:
     virtual QJsonObject getData() = 0;
+    ~iStrategy();
 };
 
 #endif //ISTRATEGY_H

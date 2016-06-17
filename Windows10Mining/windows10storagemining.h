@@ -2,7 +2,9 @@
 #define WINDOWS10STORAGEMINING_H
 
 #include "iStrategy.h"
+#if QT_VERSION >= 0x050400
 #include <QStorageInfo>
+#endif
 
 class Windows10StorageMining : public iStrategy
 {

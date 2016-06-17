@@ -9,6 +9,7 @@ QJsonObject Windows10StorageMining::getData() {
     int disks = 0;
     double total = 0;
     double use = 0;
+    #if QT_VERSION >= 0x050400
     for (auto volume : QStorageInfo::mountedVolumes()) {
         if (volume.fileSystemType() == "NTFS"  && volume.isValid()) {
             disks++;
@@ -16,6 +17,7 @@ QJsonObject Windows10StorageMining::getData() {
             use += (volume.bytesTotal() - volume.bytesAvailable());
         }
     }
+    #endif
     json["disks"] = QString::number(disks);
     json["total"] = QString::number(total / (1024 * 1024 * 1024)) + " Go";
     json["use"] = QString::number(use / (1024 * 1024 * 1024)) + " Go";

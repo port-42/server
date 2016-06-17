@@ -6,7 +6,6 @@
 #include "server.h"
 #include "dataminingfactory.h"
 
-
 int main()
 {
     DataMiningFactory factory = DataMiningFactory();

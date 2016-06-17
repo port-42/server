@@ -53,6 +53,7 @@ QJsonObject Windows7ProcessorMining::getData() {
     //Partie usage du processeur
     static PDH_HQUERY cpuQuery;
     static PDH_HCOUNTER cpuTotal;
+    int i = 0;
     PDH_FMT_COUNTERVALUE counterVal;
 
     PdhOpenQuery((LPCWSTR)NULL, (DWORD)NULL, &cpuQuery);
@@ -66,10 +67,11 @@ QJsonObject Windows7ProcessorMining::getData() {
     }
     PdhCollectQueryData(cpuQuery);
     PdhGetFormattedCounterValue(cpuTotal, PDH_FMT_DOUBLE, NULL, &counterVal);
-    while (counterVal.doubleValue == 0) {
+    while (counterVal.doubleValue == 0 && i < 10) {
         usleep(1000);
         PdhCollectQueryData(cpuQuery);
         PdhGetFormattedCounterValue(cpuTotal, PDH_FMT_DOUBLE, NULL, &counterVal);
+        i++;
     }
     int counter = counterVal.doubleValue;
     json["usage"] = QString::number(counter);
