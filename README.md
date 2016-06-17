@@ -1,8 +1,8 @@
 # server
 
 # Pré-requis :
-Debian => build-essential qt5-default
-QTWebApp http://stefanfrings.de/qtwebapp/index-en.html (Dans le répertoire Lib)
+* Debian => build-essential qt5-default
+* QTWebApp http://stefanfrings.de/qtwebapp/index-en.html (présent dans le répertoire Lib)
 
 # Utilisation :
 
