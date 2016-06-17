@@ -32,9 +32,7 @@ SOURCES += main.cpp \
     Windows10Mining/windows10osmining.cpp \
     Windows10Mining/windows10processormining.cpp \
     Windows10Mining/windows10storagemining.cpp \
-    controller/jsoncontroller.cpp \
-    controller/oscontroller.cpp \
-    controller/notfoundcontroller.cpp \
+    controller/maincontroller.cpp \
     requestmapper.cpp
 
 HEADERS += \
@@ -55,9 +53,7 @@ HEADERS += \
     Windows10Mining/windows10osmining.h \
     Windows10Mining/windows10processormining.h \
     Windows10Mining/windows10storagemining.h \
-    controller/jsoncontroller.h \
-    controller/oscontroller.h \
-    controller/notfoundcontroller.h \
+    controller/maincontroller.h \
     requestmapper.h
 
 DISTFILES += \
