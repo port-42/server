@@ -27,17 +27,17 @@ void RequestMapper::service(HttpRequest& request, HttpResponse& response)
 
     else if (path.startsWith("/cpu"))
     {
-      MainController(factory, processor).service(request, response);
+      MainController(factory, cpu).service(request, response);
     }
 
     else if (path.startsWith("/ram"))
     {
-      MainController(factory, memory).service(request, response);
+      MainController(factory, ram).service(request, response);
     }
 
     else if (path.startsWith("/hdd"))
     {
-      MainController(factory, storage).service(request, response);
+      MainController(factory, hdd).service(request, response);
     }
 
     // If nothing is found you don't respect the API
