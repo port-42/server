@@ -1,6 +1,5 @@
 #include "dataminingfactory.h"
 
-
 DataMiningFactory::DataMiningFactory()
 {
 }
@@ -12,15 +11,15 @@ iDataMining *DataMiningFactory::Create(dataType dType) {
         iStrategy *strategy = new DebianOsMining();
         mining->setStrategy(strategy);
     }
-    else if (dType == processor) {
+    else if (dType == cpu) {
         iStrategy *strategy = new DebianProcessorMining();
         mining->setStrategy(strategy);
     }
-    else if (dType == memory) {
+    else if (dType == ram) {
         iStrategy *strategy = new DebianMemoryMining();
         mining->setStrategy(strategy);
     }
-    else if (dType == storage) {
+    else if (dType == hdd) {
         iStrategy *strategy = new DebianStorageMining();
         mining->setStrategy(strategy);
     }
