@@ -17,8 +17,17 @@ TEMPLATE = app
 
 win32:LIBS += -lPdh
 
-SOURCES += main.cpp \
-    API/dataminingfactory.cpp \
+#CONFIG += test_unit
+
+test_unit {
+    SOURCES += Test/unitTestAPI.cpp
+    HEADERS += Test/unitTestAPI.h
+}
+else {
+    SOURCES += main.cpp
+}
+
+SOURCES += API/dataminingfactory.cpp \
     API/mining.cpp \
     API/DebianMining/debianprocessormining.cpp \
     API/DebianMining/debianosmining.cpp \

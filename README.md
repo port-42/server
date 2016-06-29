@@ -7,6 +7,12 @@
 # Utilisation :
 
 Se placer dans le répertoire puis lancer les commandes suivantes :
-* qmake -o Makefile server.pro
+* qmake -o Makefile Server.pro
+* make
+* ./server
+
+# Test unitaires
+Se placer dans le répertoire puis lancer les commandes suivantes :
+* qmake "QT += testlib" "CONFIG+=test_unit" -o Makefile Server.pro
 * make
 * ./server
