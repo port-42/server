@@ -61,7 +61,11 @@ QString LogMessage::toString(const QString& msgFormat, const QString& timestampF
     decorated.replace("{line}",QString::number(line));
 
     QString threadId;
+#ifdef Q_PROCESSOR_X86_64
+    threadId.setNum((unsigned long)(intptr_t)QThread::currentThreadId());
+#else
     threadId.setNum((unsigned long)QThread::currentThreadId());
+#endif
     decorated.replace("{thread}",threadId);
 
     // Fill in variables
