@@ -1,7 +1,7 @@
 #ifndef WINDOWS10MEMORYMINING_H
 #define WINDOWS10MEMORYMINING_H
 
-#include "API/iStrategy.h"
+#include "../iStrategy.h"
 
 class Windows10MemoryMining : public iStrategy
 {

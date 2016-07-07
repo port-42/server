@@ -1,6 +1,6 @@
 #ifndef DATAMININGFACTORY_H
 #define DATAMININGFACTORY_H
-#include "server.h"
+#include "../server.h"
 #include "iDataMining.h"
 #include "mining.h"
 #include "DebianMining/debianosmining.h"
