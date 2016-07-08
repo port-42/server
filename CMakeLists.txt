@@ -5,11 +5,14 @@ project(Server)
 #COMPILE WITH C++ 11
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
+option(UnitTest "UnitTest" OFF)
+
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
 find_package(Qt5Core)
 find_package(Qt5Network)
+find_package(Qt5Test)
 
 file(GLOB API_SRC
   "API/*.h"
@@ -26,14 +29,19 @@ file(GLOB API_SRC
 
 file(GLOB SRV_SRC
   "*.h"
-  "*.cpp"
+  "requestmapper.cpp"
   )
+
+if (UnitTest)
+  set (SRV_SRC ${SRV_SRC} Test/unitTestAPI.h Test/unitTestAPI.cpp)
+else()
+  set (SRV_SRC ${SRV_SRC} main.cpp)
+endif (UnitTest)
 
 #ADD EXTERNAL LIBS
 include_directories ("${PROJECT_SOURCE_DIR}/Lib/QtWebApp/httpserver/")
 add_subdirectory (Lib/QtWebApp/httpserver)
 set (EXTRA_LIBS ${EXTRA_LIBS} httpserver)
 
-
-add_executable(server main.cpp ${SRV_SRC} ${API_SRC})
-target_link_libraries(server Qt5::Core Qt5::Network ${EXTRA_LIBS})
+add_executable(server ${SRV_SRC} ${API_SRC})
+target_link_libraries(server Qt5::Core Qt5::Network Qt5::Test ${EXTRA_LIBS})
