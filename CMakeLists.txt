@@ -10,9 +10,9 @@ option(UnitTest "UnitTest" OFF)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt5Core)
-find_package(Qt5Network)
-find_package(Qt5Test)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Network REQUIRED)
+find_package(Qt5Test REQUIRED)
 
 file(GLOB API_SRC
   "API/*.h"
@@ -45,3 +45,12 @@ set (EXTRA_LIBS ${EXTRA_LIBS} httpserver)
 
 add_executable(server ${SRV_SRC} ${API_SRC})
 target_link_libraries(server Qt5::Core Qt5::Network Qt5::Test ${EXTRA_LIBS})
+
+
+# GENERATION OF THE INSTALLERS FOR DEBIAN
+INSTALL(TARGETS server DESTINATION port)
+
+SET(CPACK_GENERATOR "DEB")
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Alex ARNAUD") #required
+
+INCLUDE(CPack)
