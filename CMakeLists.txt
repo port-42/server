@@ -5,6 +5,9 @@ project(Server)
 #COMPILE WITH C++ 11
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
+set (Server_VERSION_MAJOR 1)
+set (Server_VERSION_MINOR 0)
+
 option(UnitTest "UnitTest" OFF)
 
 # Instruct CMake to run moc automatically when needed.
@@ -46,11 +49,17 @@ set (EXTRA_LIBS ${EXTRA_LIBS} httpserver)
 add_executable(server ${SRV_SRC} ${API_SRC})
 target_link_libraries(server Qt5::Core Qt5::Network Qt5::Test ${EXTRA_LIBS})
 
-
 # GENERATION OF THE INSTALLERS FOR DEBIAN
 INSTALL(TARGETS server DESTINATION port)
+install (FILES Port-Server.ini DESTINATION port)
 
 SET(CPACK_GENERATOR "DEB")
 SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Alex ARNAUD") #required
 
-INCLUDE(CPack)
+# build a CPack driven installer package
+include (InstallRequiredSystemLibraries)
+set (CPACK_RESOURCE_FILE_LICENSE
+  "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set (CPACK_PACKAGE_VERSION_MAJOR "${Server_VERSION_MAJOR}")
+set (CPACK_PACKAGE_VERSION_MINOR "${Server_VERSION_MINOR}")
+include (CPack)
