@@ -1,7 +1,7 @@
 #ifndef WINDOWS10OSMINING_H
 #define WINDOWS10OSMINING_H
 
-#include "API/iStrategy.h"
+#include "../iStrategy.h"
 #include <QtGlobal>
 
 class Windows10OSMining : public iStrategy

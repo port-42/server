@@ -3,7 +3,7 @@
 
 #include <QJsonObject>
 #include <QJsonDocument>
-#include "API/dataminingfactory.h"
+#include "../API/dataminingfactory.h"
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httprequesthandler.h"

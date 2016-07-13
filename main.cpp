@@ -4,7 +4,7 @@
 #include <QtGlobal>
 #include <QJsonObject>
 #include <httplistener.h>
-#include <requestmapper.h>
+#include "requestmapper.h"
 
 #include "server.h"
 

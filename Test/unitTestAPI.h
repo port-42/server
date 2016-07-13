@@ -2,7 +2,7 @@
 #define UNITTESTAPI_H
 
 #include <QtTest/QTest>
-#include "API/dataminingfactory.h"
+#include "../API/dataminingfactory.h"
 
 class unitTestAPI: public QObject
 {
